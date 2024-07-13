@@ -22,7 +22,7 @@
             Fit it
         </div>
         <div class="contents">
-            <div class="content" id="gender_select">
+            <div class="content" id="gender_select" style="display: none;">
                 <main>
                     <section id="sel_gender">
                         <h2> Gender</h2>
@@ -55,7 +55,7 @@
                 </main>
             </div>
     
-            <div class="content" id="condition_select">
+            <div class="content" id="condition_select" style="display: none;">
                 <main>
                     <section id="clothing-style">
                         <div class="styles">
@@ -83,7 +83,38 @@
                     </section>
                 </main>
             </div>
-            
+            <!-- style="display: none;" -->
+            <div id="imagesContainer" >
+                <div class="resultImageContainer">
+                    <div class="resultImageSet">
+                        <img id="resultImage1" class="resultImage" src="static/2024-07-04 02-03-45_0.png" />
+                        <div class="btnInImage" >
+                            <img id="btnInImageDown1" class="downloadimg" src="static/download.png" />
+                        </div>
+                        <div class="btnInImage2" >
+                            <img id="btnInImageShare1" class="shareimg" src="static/share.png" />
+                        </div>
+                    </div>
+                    <div class="resultImageSet">
+                        <img id="resultImage2" class="resultImage" src="static/2024-07-04 02-03-45_1.png" />
+                        <div class="btnInImage" >
+                            <img id="btnInImageDown2" class="downloadimg" src="static/download.png" />
+                        </div>
+                        <div class="btnInImage2" >
+                            <img id="btnInImageShare2" class="shareimg" src="static/share.png" />
+                        </div>
+                    </div>
+                </div>
+                 <center>
+                    <a href="http://pf.kakao.com/_PxeHHG" target="_blank">
+                        <img src="static/kakaotalk.png" alt="KakaoTalk Link" class="addon-img-size">
+                    </a>
+                    <a href="https://www.buymeacoffee.com/kjhbest" target="_blank">
+                        <img src="static/buymeacoffee.png" alt="Buy_Me_A_Coffee Link" class="addon-img-size">
+                    </a>
+                </center> 
+                <br>
+            </div>
         </div>
         <div class="footer" id="upload">
             <img class="selected_footer_img" id="selected_footer_style" src="static/empty_select_footer.png" alt="Background Image" style="margin-left: 8px;" />
@@ -95,34 +126,9 @@
             <button class="flat-button cursive" id="uploadButton" style="margin-right: 8px;">Fit it</button>
             <button class="flat-button-sub" id="againButton">Again same picture</button>
             <input style="display: none;" type="file" id="fileInput" />
-            <!-- <center>
-                <a href="http://pf.kakao.com/_PxeHHG">
-                    <img src="static/kakaotalk.png" alt="KakaoTalk Link" class="addon-img-size">
-                </a>
-                <a href="https://www.buymeacoffee.com/kjhbest">
-                    <img src="static/buymeacoffee.png" alt="Buy_Me_A_Coffee Link" class="addon-img-size">
-                </a>
-            </center> 
-            <br>-->
+           
             
-            <div id="imagesContainer">
-                <div class="resultImageContainer">
-                    <div class="resultImageSet">
-                        <img id="resultImage1" class="resultImage" src="static/result_2024-06-22 22-08-50_B.jpg" />
-                        <div class="button-container">
-                            <button class="subControlButton" id="likeA"><i class="fas fa-thumbs-up"></i></button>
-                            <button class="subControlButton" id="downloadA"><i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                    <div class="resultImageSet">
-                        <img id="resultImage2" class="resultImage" src="static/result_2024-06-22 22-08-50_B.jpg"/>
-                        <div class="button-container">
-                            <button class="subControlButton" id="likeB"><i class="fas fa-thumbs-up"></i></button>
-                            <button class="subControlButton" id="downloadB"><i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
    
@@ -149,7 +155,47 @@
         //let uploadUrl = 'http://localhost:8089'
         let selFooterItems = [false,false,false];
         let global_taskid;
-      
+        function downloadlink(img){
+            var imageURL = img.src;
+            //logEvent(analytics, 'downloadA_button_click');
+            // 링크 생성
+            var link = document.createElement('a');
+            link.href = imageURL;
+            var timestamp = Date.now();
+
+            // 파일 이름 생성 (예: image_1624032131000.jpg)
+            var fileName = `image_${timestamp}.jpg`;
+            link.download = fileName;
+
+            // 링크 클릭 시뮬레이션
+            document.body.appendChild(link);
+            link.click();
+           
+
+            // 링크 삭제
+            document.body.removeChild(link);
+        }
+        document.getElementById('btnInImageDown1').addEventListener('click', function() {
+            console.log('Download button clicked for image 1');
+            var img = document.getElementById('resultImage1');
+            downloadlink(img);
+        });
+
+        document.getElementById('btnInImageShare1').addEventListener('click', function() {
+            console.log('Share button clicked for image 1');
+            // 여기에 공유 로직 추가
+        });
+
+        document.getElementById('btnInImageDown2').addEventListener('click', function() {
+            console.log('Download button clicked for image 2');
+            var img = document.getElementById('resultImage2');
+            downloadlink(img);
+        });
+
+        document.getElementById('btnInImageShare2').addEventListener('click', function() {
+            console.log('Share button clicked for image 2');
+            // 여기에 공유 로직 추가
+        });
         
         function showLoadingScreen(turn_on){
             var loadingScreen = document.getElementById('loading');
@@ -422,10 +468,13 @@
                 .then(data => {
                     console.log('성공:', data);
                     if(data.images != undefined){
+                        var gender_select = document.getElementById("gender_select");
+                        gender_select.style.display = 'none';
+                        var condition_select = document.getElementById('condition_select');
+                        condition_select.style.display = 'none';
+                        
                         displayImages(data.images);
-                        showLoadingScreen(false);
-                        const againButton = document.getElementById('againButton');
-                        againButton.style.display = "block"
+                       // showLoadingScreen(false);
                         window.scroll({
                             top: document.body.scrollHeight,
                             behavior: 'smooth'
@@ -447,7 +496,7 @@
             var likebtnB = document.getElementById('likeB');
             likebtnB.style.color= "#646464";
             const imagesContainer = document.getElementById('imagesContainer');
-            
+            imagesContainer.style.display = "inline-flex";
             var i=1;
             images.forEach(imgStr => {
                 var srcid = 'resultImage'+i
@@ -478,48 +527,48 @@
         //     likebtn.style.color= "#06bcff";
         //     logEvent(analytics, 'likeB_button_click');
         // });
-        document.getElementById('downloadA').addEventListener('click', function() {
-            var img = document.getElementById('resultImage1');
-            var imageURL = img.src;
-            logEvent(analytics, 'downloadA_button_click');
-            // 링크 생성
-            var link = document.createElement('a');
-            link.href = imageURL;
-            var timestamp = Date.now();
+        // document.getElementById('downloadA').addEventListener('click', function() {
+        //     var img = document.getElementById('resultImage1');
+        //     var imageURL = img.src;
+        //     logEvent(analytics, 'downloadA_button_click');
+        //     // 링크 생성
+        //     var link = document.createElement('a');
+        //     link.href = imageURL;
+        //     var timestamp = Date.now();
 
-            // 파일 이름 생성 (예: image_1624032131000.jpg)
-            var fileName = `image_${timestamp}.jpg`;
-            link.download = fileName;
+        //     // 파일 이름 생성 (예: image_1624032131000.jpg)
+        //     var fileName = `image_${timestamp}.jpg`;
+        //     link.download = fileName;
 
-            // 링크 클릭 시뮬레이션
-            document.body.appendChild(link);
-            link.click();
+        //     // 링크 클릭 시뮬레이션
+        //     document.body.appendChild(link);
+        //     link.click();
 
-            // 링크 삭제
-            document.body.removeChild(link);
+        //     // 링크 삭제
+        //     document.body.removeChild(link);
         
-        });
-        document.getElementById('downloadB').addEventListener('click', function() {
-            var img = document.getElementById('resultImage2');
-            var imageURL = img.src;
-            logEvent(analytics, 'downloadB_button_click');
-            // 링크 생성
-            var link = document.createElement('a');
-            link.href = imageURL;
-            var timestamp = Date.now();
+        // });
+        // document.getElementById('downloadB').addEventListener('click', function() {
+        //     var img = document.getElementById('resultImage2');
+        //     var imageURL = img.src;
+        //     logEvent(analytics, 'downloadB_button_click');
+        //     // 링크 생성
+        //     var link = document.createElement('a');
+        //     link.href = imageURL;
+        //     var timestamp = Date.now();
 
-            // 파일 이름 생성 (예: image_1624032131000.jpg)
-            var fileName = `image_${timestamp}.jpg`;
-            link.download = fileName;
+        //     // 파일 이름 생성 (예: image_1624032131000.jpg)
+        //     var fileName = `image_${timestamp}.jpg`;
+        //     link.download = fileName;
 
-            // 링크 클릭 시뮬레이션
-            document.body.appendChild(link);
-            link.click();
+        //     // 링크 클릭 시뮬레이션
+        //     document.body.appendChild(link);
+        //     link.click();
 
-            // 링크 삭제
-            document.body.removeChild(link);
+        //     // 링크 삭제
+        //     document.body.removeChild(link);
         
-        });
+        // });
         
     </script>
     

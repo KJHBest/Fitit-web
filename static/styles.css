@@ -188,6 +188,8 @@ section {
 .resultImage{
    width: 100%;
    border-radius: 10px;
+   z-index: 1;
+
 }
 .button-container {
     margin-top: 10px;
@@ -195,19 +197,20 @@ section {
     justify-content: space-between;
 }
 .resultImageContainer{
-    display: none;
+    display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    /* align-items: flex;
+    flex-wrap: wrap; */
 }
 .resultImageSet{
-    width: 45%;
+    width: 40%;
     text-align: center;
-    
+    position: relative;
     padding: 5px;
 }
 .addon-img-size {
-    height: 100px;
+    width: 25px;
+    height: 25px;
     display: block;
 }
 a {
@@ -239,6 +242,9 @@ a {
     text-align: center;
     height:100%;
     
+}
+#imagesContainer{
+    height:100%;
 }
 #voteImagesContainer{
     margin-top: 24px;
@@ -321,4 +327,37 @@ a {
     width:40px;
     border-radius: 20px;
     font-size: 12px;
+}
+.btnInImage{
+    width:15%;
+    opacity: 0.6;
+    cursor: pointer;
+    position: absolute;
+    
+    z-index: 2;
+    right: 8%;
+    top: 10px;
+    display: none;
+}
+.btnInImage2{
+    width:15%;
+    opacity: 0.6;
+    cursor: pointer;
+    position: absolute;
+    
+    z-index: 2;
+    right: 26%;
+    top: 10px;
+    display: none;
+}
+.downloadimg{
+    width: 100%;
+    border-radius: 5px;
+}
+.shareimg{
+    width: 100%;
+    border-radius: 5px;
+}
+.resultImageSet:hover .btnInImage, .resultImageSet:hover .btnInImage2 {
+    display: block;
 }
