@@ -32,7 +32,7 @@
                         </div>
                     </section>
                     <section id="clothing-categories">
-                        <h2>Style</h2>
+                        <h2 id="h2_style">Style</h2>
                         <div id="categories">
                             <button class="category-btn selected" data-category="all">All</button>
                             <button class="category-btn" data-category="new">New</button>
@@ -63,7 +63,7 @@
                         </div>
                     </section>
                     <section id="background">
-                        <h2> Background</h2>
+                        <h2 id="h2_background"> Background</h2>
                         <div class="backgrounds">
                             <div id="bg_10"><img src="static/bg/Hawaii Beach.png" alt="Background Image" /><div class="new-badge">NEW</div>Hawaii Beach</div>
                             <div id="bg_11"><img src="static/bg/Santorini.png" alt="Background Image" /><div class="new-badge">NEW</div>Santorini</div>
@@ -90,7 +90,7 @@
             <div class="image-title">Style</div>
             <img class="selected_footer_img" id="selected_footer_bg" src="static/empty_select_footer.png" alt="Background Image" />
             <div class="image-title2">BG</div>
-            <img class="selected_footer_img" id="selected_footer_face" src="static/empty_select_footer.png" alt="Background Image" />
+            <img class="selected_footer_img" id="selected_footer_photo" src="static/empty_select_footer.png" alt="Background Image" />
             <div class="image-title3">Photo</div>
             <button class="flat-button cursive" id="uploadButton" style="margin-right: 8px;">Fit it</button>
             <button class="flat-button-sub" id="againButton">Again same picture</button>
@@ -145,9 +145,9 @@
         <p id="vote_text2">결과물의 좋아요 버튼을 누르면 너도 참여할 수 있어.</p>
     </div>
     <script type="module">
-        //let uploadUrl = 'http://kjhbest.iptime.org:8080'
-        let uploadUrl = 'http://localhost:8089'
-        
+        let uploadUrl = 'http://kjhbest.iptime.org:8080'
+        //let uploadUrl = 'http://localhost:8089'
+        let selFooterItems = [false,false,false];
         let global_taskid;
       
         
@@ -215,30 +215,65 @@
         });  
         document.getElementById('sel_gender').addEventListener('click', function(){
             const selectedOptions = document.querySelectorAll('.selected');
-            // var styles = document.querySelector("#clothing-style");
-            // var stylesM = document.querySelector("#clothing-style-man");
-            // if(selectedOptions[0].id == "gender_0"){
-            //     console.log("0")
-            //     styles.style.display = "block"
-            //     stylesM.style.display = "none"
-            // }else{
-            //     console.log("2")
-            //     styles.style.display = "none"
-            //     stylesM.style.display = "block"
-            // }
-            // const styleOptions = document.querySelectorAll('.styles div');
-            // styleOptions.forEach(option => {
-            //     option.addEventListener('click', () => {
-            //         styleOptions.forEach(opt => opt.classList.remove('selected'));
-            //         option.classList.add('selected');
-            //     });
-            // });
+        });
+        function onChangeButtonColor(onFlag){
+            if(onFlag){
+                console.log("onChangeButtonColor true")
+                let btnFitit = document.getElementById('uploadButton');
+                btnFitit.style.backgroundImage  = "linear-gradient(135deg, #a445b2, #d41872, #06bcff)"
+            }else{
+                console.log("onChangeButtonColor false")
+                let btnFitit = document.getElementById('uploadButton');
+                btnFitit.style.backgroundImage="";
+                btnFitit.style.backgroundColor  = "rgb(189, 189, 189)";
+                
+            }
+           
+        }
+        const sel_foot_imgs = document.querySelectorAll('.selected_footer_img');
+        sel_foot_imgs.forEach(img => {
+            img.addEventListener('click', function() {
+                if(img.id == "selected_footer_style"){
+                    document.getElementById('h2_style').scrollIntoView({
+                        behavior: 'smooth', // 'auto' 또는 'smooth'
+                        block: 'start' // 'start', 'center', 'end', 'nearest'
+                        });
+                }else if(img.id == "selected_footer_bg"){
+                    document.getElementById('h2_background').scrollIntoView({
+                        behavior: 'smooth', // 'auto' 또는 'smooth'
+                        block: 'start' // 'start', 'center', 'end', 'nearest'
+                        });
+                }else if(img.id == "selected_footer_photo"){
+                    const fileInput = document.getElementById('fileInput');
+                    fileInput.value='';
+                    selFooterItems[2] = false;
+                    onChangeButtonColor(false);
+                    const footer_img = document.getElementById("selected_footer_photo");
+                    footer_img.src = "static/empty_select_footer.png";
+                    // 파일 선택 대화상자 열기
+                    fileInput.click();
+                    
+                    // 파일이 선택되면 업로드 시작
+                    fileInput.onchange = function() {
+                        const file = fileInput.files[0];
+                        console.log(file)
+                        if (!file) {
+                            alert('파일을 선택해주세요.');
+                            return;
+                        }
+                        footer_img.src = URL.createObjectURL(file);
+                        selFooterItems[2] = true;
+                        if (selFooterItems.every(item => item === true)) {
+                            onChangeButtonColor(true);
+                        }
+                    }
+                }
+            });
         });
         function get_data(){
-            fetch('DB/style.json')
+            fetch('https://fitit-web.pages.dev/DB/style.json')
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 const styleDataContainer = document.querySelector('.styles');
                 let Index = data.length - 1;
                 data.slice().reverse().forEach(item => {
@@ -289,6 +324,10 @@
                         option.classList.add('selected');
                         const footer_img = document.getElementById("selected_footer_style");
                         footer_img.src = option.querySelector('img').src;
+                        selFooterItems[0] = true;
+                        if (selFooterItems.every(item => item === true)) {
+                            onChangeButtonColor(true);
+                        }
                     });
                 });
 
@@ -327,6 +366,10 @@
                         option.classList.add('selected');
                         const footer_img = document.getElementById("selected_footer_bg");
                         footer_img.src = option.querySelector('img').src;
+                        selFooterItems[1] = true;
+                        if (selFooterItems.every(item => item === true)) {
+                            onChangeButtonColor(true);
+                        }
                     });
                 });
                 // <div class="stylediv selected" id="8" data-category="female,dress,new" class="selected"><img src="static/dress/female/White wedding dress.png" alt="Female Image" /><div class="new-badge">NEW</div>White Wedding Dress</div>
@@ -341,7 +384,11 @@
             
         });
         //  다시 업로드(같은 사진)
-        document.getElementById('againButton').addEventListener('click', function() {
+        document.getElementById('uploadButton').addEventListener('click', function() {
+            if (selFooterItems.every(item => item === true)) {
+            }else{
+                alert('3가지 항목을 모두 선택 해주세요.');
+            }
             const selectedOptions = document.querySelectorAll('div.selected');
             const selDatas = {
                 "gender" : selectedOptions[0].id.replace("gender_",''),
@@ -392,67 +439,7 @@
                 });
 
         });
-        // 파일 업로드
-        document.getElementById('uploadButton').addEventListener('click', function() {
-            const selectedOptions = document.querySelectorAll('div.selected');
-            const selDatas = {
-                "gender" : selectedOptions[0].id.replace("gender_",''),
-                "style"  : selectedOptions[1].id,
-                "bg"     : selectedOptions[2].id.replace("bg_",''),
-                }
-            
-            const fileInput = document.getElementById('fileInput');
-            fileInput.value='';
-            // 파일 선택 대화상자 열기
-            fileInput.click();
-            
-            // 파일이 선택되면 업로드 시작
-            fileInput.onchange = function() {
-                const file = fileInput.files[0];
-                
-                if (!file) {
-                    alert('파일을 선택해주세요.');
-                    return;
-                }
-                // 로딩 바 보이기
-                // showLoadingScreen(true);
-                showVoteScreen(true);
-                var imagecontainer = document.querySelector(".resultImageContainer");
-                imagecontainer.style.display="flex";
-                
-
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('datas', JSON.stringify(selDatas));
-                
-                fetch(uploadUrl+'/upload', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('성공:', data);
-                    if(data.images != undefined){
-                        displayImages(data.images);
-                        showLoadingScreen(false);
-                        showVoteScreen(false);
-                        const againButton = document.getElementById('againButton');
-                        againButton.style.display = "block"
-                        window.scroll({
-                            top: document.body.scrollHeight,
-                            behavior: 'smooth'
-                            });
-                    }
-                })
-                .catch((error) => {
-                    console.error('오류:', error);
-                    showLoadingScreen(false);
-                    showVoteScreen(trfalseue);
-                    alert("An error has occurred. Please check the file again.");
-                });
-            }
-        });
-       
+        
      
         function displayImages(images) {
             var likebtnA = document.getElementById('likeA');

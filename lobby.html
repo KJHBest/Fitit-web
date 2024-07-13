@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        .cursive {
+            font-family: 'Pacifico', cursive;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000;
+        }
+        .center_video{
+            text-align: center;
+             display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .title-bar {
+            /* background-color: #800020; */
+            /* color: #D3D3D3; */
+            color:#dedede;
+            text-align: left;
+            padding: 15px 20px;
+            font-size: 24px;
+            
+        }
+        .TryButtonDiv{
+            position: absolute;
+            top: 10px; /* 화면 상단에서 10px 떨어짐 */
+            right: 10px; /* 화면 우측에서 10px 떨어짐 */
+            padding: 10px 20px;
+        }
+        .TryBtn{
+            border: none;
+            color: #111;
+            background-color: #dedede;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .submitEmail{
+            border: none;
+            color: #111;
+            background-color: #ffa59a;
+            padding: 5px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .context{
+            padding: 10px 20px;
+            color: #dedede;
+            text-align: center;
+        }
+        img{
+            width:35%;
+            border-radius: 15px;
+        }
+        input{
+            border: none;
+            color: #111;
+            background-color: #dedede;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 30px;
+        }
+        .image-gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .image-gallery img {
+            flex: 0 0 auto;
+            width: 40%; /* 이미지 크기는 필요에 따라 조정 */
+            height: auto;
+            margin-right: 10px;
+            scroll-snap-align: start;
+        }
+        #email #email2{
+            width:55%;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="title-bar cursive">
+        Fit it
+    </div>
+    <div class="TryButtonDiv">
+        <button class="TryBtn">Coming Soon</button>
+    </div>
+    <div class="center_video">
+    <video width="100%" style="pointer-events:none;"  controls loop autoplay muted playsinline>
+        <source src="static/total.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+    <div class="context">
+        "A single photograph can create countless memorable moments"
+        <br><br>Fitit is a service designed to transform a single photograph into countless memorable moments. Our motto, "A single photograph can create countless memorable moments," encapsulates the essence of our mission. With Fitit, users can experiment with various clothing styles and backgrounds, creating new memories and exploring the latest fashion trends, all from one photo. Whether for fun, fashion, or cherished memories, Fitit offers endless possibilities.
+        <br><br>Fitit은 단 한 장의 사진을 무수한 기억에 남는 순간들로 변신시키는 서비스입니다. 우리의 모토, "단 한 장의 사진으로 다양한 스타일의 옷들과 배경을 바꾸어 무수한 추억을 만들어 보세요"는 우리의 사명을 잘 나타내고 있습니다. Fitit을 통해 사용자는 다양한 옷 스타일과 배경을 시도하며 새로운 추억을 만들고 최신 패션 트렌드를 탐험할 수 있습니다. 재미, 패션, 소중한 기억을 위해 Fitit은 무한한 가능성을 제공합니다.
+        <br><br>
+        <form id="subscribeForm">
+            <input type="email" id="email" name="email" placeholder ="Enter your E-mail" required>
+            <button class="submitEmail" type="submit">Notify Me</button>
+        </form>
+        <br><br>
+        <div class="image-gallery">
+            <img src="static/vote_images/2024-07-04 02-03-45_0.png"/>
+            <img src="static/vote_images/2024-07-04 02-03-45_1.png"/>
+            <img src="static/vote_images/2024-07-04 02-07-07_0.png"/>
+            <img src="static/vote_images/image_1719588809692.jpg"/>
+            <img src="static/vote_images/image_1719588748258.jpg"/>
+            <img src="static/vote_images/2024-07-07 22-25-57_0.png"/>
+            <img src="static/vote_images/2024-07-07 22-25-57_1.png"/>
+            <img src="static/vote_images/image_1719588775943.jpg"/>
+            <img src="static/vote_images/w1.png"/>
+            <img src="static/vote_images/w2.png"/>
+            <img src="static/vote_images/w3.png"/>
+            <img src="static/vote_images/w4.png"/>
+            <img src="static/vote_images/w5.png"/>
+            <img src="static/vote_images/w6.png"/>
+        </div>
+        
+        <p>다양한 스타일을 체험하세요</p>
+        <p>시즌에 맞는 트랜드를 즐겨보세요</p>
+        <p>평소 입어보지 못한 재미있는 스타일</p>
+        <p>나에게 잘 어울리는 옷을 찾아보세요</p>
+        <p>마음에 드는 스타일을 찾으면</p>
+        <p>실제로 구입할 수 있게 연결해드립니다.</p>
+        <br><br>
+
+        
+        <div class="image-gallery">
+            <img src="static/vote_images/MoviePoster/P1.jpg"/>
+            <img src="static/vote_images/MoviePoster/P2.jpg"/>
+            <img src="static/vote_images/MoviePoster/P3.jpg"/>
+            <img src="static/vote_images/MoviePoster/P4.jpg"/>
+            <img src="static/vote_images/MoviePoster/P5.jpg"/>
+            <img src="static/vote_images/MoviePoster/P6.jpg"/>
+            <img src="static/vote_images/MoviePoster/B1.jpg"/>
+            <img src="static/vote_images/MoviePoster/B2.png"/>
+        </div>
+        <p>이미지 속의 주인공을 </p>
+        <p>내 모습으로 바꿔볼 수도 있습니다.</p>
+        <p>홍보 및 특별한 이벤트로 </p>
+        <p>포토카드를 만들기 원한다면</p>
+        <p>연락 주세요</p>
+        <br><br>
+        
+        <div class="image-gallery">
+            <img src="static/vote_images/Shopping/S0.png"/>
+            <img src="static/vote_images/Shopping/S1.png"/>
+            <img src="static/vote_images/Shopping/S2.png"/>
+            <img src="static/vote_images/Shopping/S3.png"/>
+        </div>
+        <p>쇼핑몰 이미지속 모델 대신</p>
+        <p>내가 입으면 어떤 느낌일까?</p>
+        <p>연락 주세요</p>
+        <a href="https://zigzag.kr/catalog/products/121160827" target="_blank">위 상품 링크</a>
+        <br><br>
+        <form id="subscribeForm2">
+            <input type="email" id="email2" name="email" placeholder ="Enter your E-mail" required>
+            <button type="submit" class="submitEmail">Notify Me</button>
+        </form>
+        <br><br>
+        <p>E-mail : fititstyle@gmail.com</p>
+    </div>
+    <script>
+        document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            fetch('/NotifyMe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('Thank you for subscribing!');
+                } else {
+                    alert('There was an error. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('subscribeForm2').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email2').value;
+
+            fetch('/NotifyMe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('Thank you for subscribing!');
+                } else {
+                    alert('There was an error. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
