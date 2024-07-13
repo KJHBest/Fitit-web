@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitit</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="static/styles.css">
     <style>
@@ -22,7 +23,7 @@
             Fit it
         </div>
         <div class="contents">
-            <div class="content" id="gender_select" style="display: none;">
+            <div class="content" id="gender_select" >
                 <main>
                     <section id="sel_gender">
                         <h2> Gender</h2>
@@ -55,7 +56,7 @@
                 </main>
             </div>
     
-            <div class="content" id="condition_select" style="display: none;">
+            <div class="content" id="condition_select" >
                 <main>
                     <section id="clothing-style">
                         <div class="styles">
@@ -84,10 +85,10 @@
                 </main>
             </div>
             <!-- style="display: none;" -->
-            <div id="imagesContainer" >
+            <div id="imagesContainer" style="display: none;">
                 <div class="resultImageContainer">
                     <div class="resultImageSet">
-                        <img id="resultImage1" class="resultImage" src="static/2024-07-04 02-03-45_0.png" />
+                        <img id="resultImage1" class="resultImage" src="static/EmptyResult.jpg" />
                         <div class="btnInImage" >
                             <img id="btnInImageDown1" class="downloadimg" src="static/download.png" />
                         </div>
@@ -96,7 +97,7 @@
                         </div>
                     </div>
                     <div class="resultImageSet">
-                        <img id="resultImage2" class="resultImage" src="static/2024-07-04 02-03-45_1.png" />
+                        <img id="resultImage2" class="resultImage" src="static/EmptyResult.jpg" />
                         <div class="btnInImage" >
                             <img id="btnInImageDown2" class="downloadimg" src="static/download.png" />
                         </div>
@@ -104,6 +105,26 @@
                             <img id="btnInImageShare2" class="shareimg" src="static/share.png" />
                         </div>
                     </div>
+                    <br>
+                    <div class="resultImageSet">
+                        <img id="resultImage3" class="resultImage" src="static/EmptyResult.jpg" />
+                        <div class="btnInImage" >
+                            <img id="btnInImageDown3" class="downloadimg" src="static/download.png" />
+                        </div>
+                        <div class="btnInImage2" >
+                            <img id="btnInImageShare3" class="shareimg" src="static/share.png" />
+                        </div>
+                    </div>
+                    <div class="resultImageSet">
+                        <img id="resultImage4" class="resultImage" src="static/EmptyResult.jpg" />
+                        <div class="btnInImage" >
+                            <img id="btnInImageDown4" class="downloadimg" src="static/download.png" />
+                        </div>
+                        <div class="btnInImage2" >
+                            <img id="btnInImageShare4" class="shareimg" src="static/share.png" />
+                        </div>
+                    </div>
+                    
                 </div>
                  <center>
                     <a href="http://pf.kakao.com/_PxeHHG" target="_blank">
@@ -230,6 +251,30 @@
             shareResult(img);
         });
         
+        document.getElementById('btnInImageDown3').addEventListener('click', function() {
+            console.log('Download button clicked for image 3');
+            var img = document.getElementById('resultImage3');
+            downloadlink(img);
+        });
+
+        document.getElementById('btnInImageShare3').addEventListener('click', function() {
+            console.log('Share button clicked for image 3');
+            var img = document.getElementById('resultImage3');
+            shareResult(img);
+
+        });
+        document.getElementById('btnInImageDown4').addEventListener('click', function() {
+            console.log('Download button clicked for image 4');
+            var img = document.getElementById('resultImage4');
+            downloadlink(img);
+        });
+
+        document.getElementById('btnInImageShare4').addEventListener('click', function() {
+            console.log('Share button clicked for image 4');
+            var img = document.getElementById('resultImage4');
+            shareResult(img);
+
+        });
         function showLoadingScreen(turn_on){
             var loadingScreen = document.getElementById('loading');
             var container = document.getElementById('container');
@@ -462,6 +507,14 @@
 
             
         });
+        const socket = io.connect('http://localhost:8080');
+
+        socket.on('image_processed', function(data) {
+            var src = 'data:image/jpeg;base64,' + btoa(data.image_data.match(/\w{2}/g).map(function(a) {
+                return String.fromCharCode(parseInt(a, 16));
+            }).join(''));
+            displayImage(src,data.image_number);
+        });
         //  다시 업로드(같은 사진)
         document.getElementById('uploadButton').addEventListener('click', function() {
             if (selFooterItems.every(item => item === true)) {
@@ -492,44 +545,42 @@
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('datas', JSON.stringify(selDatas));
-                
+                var gender_select = document.getElementById("gender_select");
+                gender_select.style.display = 'none';
+                var condition_select = document.getElementById('condition_select');
+                condition_select.style.display = 'none';
+                const imagesContainer = document.getElementById('imagesContainer');
+                imagesContainer.style.display = "block";
                 fetch(uploadUrl+'/upload', {
                     method: 'POST',
                     body: formData,
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('성공:', data);
-                    if(data.images != undefined){
-                        var gender_select = document.getElementById("gender_select");
-                        gender_select.style.display = 'none';
-                        var condition_select = document.getElementById('condition_select');
-                        condition_select.style.display = 'none';
+                    // console.log('성공:', data);
+                    // if(data.images != undefined){
                         
-                        displayImages(data.images);
-                       // showLoadingScreen(false);
-                        window.scroll({
-                            top: document.body.scrollHeight,
-                            behavior: 'smooth'
-                            });
-                    }
+                        
+                    //     displayImages(data.images);
+                    //    // showLoadingScreen(false);
+                    //     window.scroll({
+                    //         top: document.body.scrollHeight,
+                    //         behavior: 'smooth'
+                    //         });
+                    // }
                 })
-                .catch((error) => {
-                    console.error('오류:', error);
-                    showLoadingScreen(false);
-                    alert("An error has occurred. Please check the file again.");
-                });
+                
 
         });
         
-     
+        function displayImage(src,i){
+            var srcid = 'resultImage'+i
+            const img =  document.getElementById(srcid);
+            img.src = src;
+        }
         function displayImages(images) {
-            var likebtnA = document.getElementById('likeA');
-            likebtnA.style.color= "#646464";
-            var likebtnB = document.getElementById('likeB');
-            likebtnB.style.color= "#646464";
             const imagesContainer = document.getElementById('imagesContainer');
-            imagesContainer.style.display = "inline-flex";
+            imagesContainer.style.display = "block";
             var i=1;
             images.forEach(imgStr => {
                 var srcid = 'resultImage'+i
@@ -550,59 +601,6 @@
                 i++;
             });
         }
-        // document.getElementById('likeA').addEventListener('click', function() {
-        //     var likebtn = document.getElementById('likeA');
-        //     likebtn.style.color= "#06bcff";
-        //     logEvent(analytics, 'likeA_button_click');
-        // });
-        // document.getElementById('likeB').addEventListener('click', function() {
-        //     var likebtn = document.getElementById('likeB');
-        //     likebtn.style.color= "#06bcff";
-        //     logEvent(analytics, 'likeB_button_click');
-        // });
-        // document.getElementById('downloadA').addEventListener('click', function() {
-        //     var img = document.getElementById('resultImage1');
-        //     var imageURL = img.src;
-        //     logEvent(analytics, 'downloadA_button_click');
-        //     // 링크 생성
-        //     var link = document.createElement('a');
-        //     link.href = imageURL;
-        //     var timestamp = Date.now();
-
-        //     // 파일 이름 생성 (예: image_1624032131000.jpg)
-        //     var fileName = `image_${timestamp}.jpg`;
-        //     link.download = fileName;
-
-        //     // 링크 클릭 시뮬레이션
-        //     document.body.appendChild(link);
-        //     link.click();
-
-        //     // 링크 삭제
-        //     document.body.removeChild(link);
-        
-        // });
-        // document.getElementById('downloadB').addEventListener('click', function() {
-        //     var img = document.getElementById('resultImage2');
-        //     var imageURL = img.src;
-        //     logEvent(analytics, 'downloadB_button_click');
-        //     // 링크 생성
-        //     var link = document.createElement('a');
-        //     link.href = imageURL;
-        //     var timestamp = Date.now();
-
-        //     // 파일 이름 생성 (예: image_1624032131000.jpg)
-        //     var fileName = `image_${timestamp}.jpg`;
-        //     link.download = fileName;
-
-        //     // 링크 클릭 시뮬레이션
-        //     document.body.appendChild(link);
-        //     link.click();
-
-        //     // 링크 삭제
-        //     document.body.removeChild(link);
-        
-        // });
-        
     </script>
     
 </body>

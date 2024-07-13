@@ -199,8 +199,8 @@ section {
 .resultImageContainer{
     display: flex;
     justify-content: center;
-    /* align-items: flex;
-    flex-wrap: wrap; */
+     align-items: flex;
+    flex-wrap: wrap; 
 }
 .resultImageSet{
     width: 40%;
