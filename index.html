@@ -395,11 +395,11 @@
                 "style"  : selectedOptions[1].id,
                 "bg"     : selectedOptions[2].id.replace("bg_",''),
                 }
-            logEvent(analytics, 'select_list',{
-                gender:selectedOptions[0].id.replace("gender_",''),
-                style:selectedOptions[1].id,
-                bg:selectedOptions[2].id.replace("bg_",'')
-            });
+            // logEvent(analytics, 'select_list',{
+            //     gender:selectedOptions[0].id.replace("gender_",''),
+            //     style:selectedOptions[1].id,
+            //     bg:selectedOptions[2].id.replace("bg_",'')
+            // });
             const fileInput = document.getElementById('fileInput');
             const file = fileInput.files[0];
                 
