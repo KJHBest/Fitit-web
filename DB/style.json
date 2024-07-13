@@ -137,7 +137,7 @@
         ,"type":"new"
     }    ,{
         "category":"female,summer,new"
-        ,"img_src":"static/dress/female/Swimming wear.png"
+        ,"img_src":"static/dress/female/SwimmingWear.png"
         ,"alt":"Female Image"
         ,"text":"Swimming wear"
         ,"prompt":"coloful swimming wear"
