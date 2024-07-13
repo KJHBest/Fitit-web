@@ -1,0 +1,324 @@
+.cursive {
+    font-family: 'Pacifico', cursive;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-y: hidden;
+}
+.title-bar {
+    /* background-color: #800020; */
+    /* color: #D3D3D3; */
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명 배경 */
+    backdrop-filter: blur(10px); /* 블러 효과 */
+    color:#800020;
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom:1px solid #b7b7b7; ;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.content {
+    padding: 0px 20px;
+}
+.flat-button {
+    /* background: linear-gradient(135deg, #a445b2, #d41872, #06bcff); */
+    background: rgb(189, 189, 189);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    float:right;
+    font-size: 24px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width:100px;
+}
+.flat-button-sub {
+    background:  #06bcff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width:100%;
+}
+.subControlButton{
+    background:  #ffffff;
+    border: 1px solid;
+    border-color: #646464;
+    color: #646464;
+    font-size: 24px;
+    cursor: pointer;
+    width: 45%;
+    border-radius: 10px;
+}
+main {
+    padding: 1em;
+}
+section {
+    margin-bottom: 2em;
+    
+}
+.gender {
+    display: flex;
+    gap: 1em;
+    background-color: #ebebeb;
+    border-radius: 50px;
+}
+
+.styles, .styles_M, .backgrounds {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+  
+}
+.styles div, .styles_M div, .backgrounds div{
+    flex: 1 1 calc(50% - 10px); /* Two items per row with some space between */
+    box-sizing: border-box;
+    padding: 10px;
+    /* border: 1px solid #ccc;  */
+    text-align: center;
+}
+.gender div {
+    /* border: 1px solid #800020; */
+    
+    padding: 1em;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    border-radius: 50px;
+
+}
+.styles img, .styles_M img{
+    width:100%;
+    height: 80%;
+    object-fit: cover; /* Ensure the image covers the container */
+    aspect-ratio: 1.2; /* Make the image a square */
+    border-radius: 10px;
+}
+.backgrounds img{
+    width:100%;
+    height: 80%;
+    object-fit: cover; /* Ensure the image covers the container */
+    aspect-ratio: 1.2; /* Make the image a square */
+    border-radius: 10px;
+}
+#clothing-style-man {
+    display: none;
+}
+
+
+/* .styles div:hover, .backgrounds div:hover, .gender div:hover{
+    background-color: #ff7272;
+} */
+.selected {
+    color: #ffffff;
+    /* border-color: #212121; */
+    background-color: #007bff;
+    border-radius: 10px;
+}
+ /* 로딩 스크린 스타일 */
+ #loading {
+    /* position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 로딩 스피너 스타일 */
+.spinner {
+    /* border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute; */
+    width: 120px;
+    height: 120px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-top: 50px;
+}
+#loading_text{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#againButton{
+    display: none;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.resultImage{
+   width: 100%;
+   border-radius: 10px;
+}
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.resultImageContainer{
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.resultImageSet{
+    width: 45%;
+    text-align: center;
+    
+    padding: 5px;
+}
+.addon-img-size {
+    height: 100px;
+    display: block;
+}
+a {
+    display: inline-block;
+}
+.new-badge {
+    background-color: red;
+    color: white;
+    padding: 2px 2px !important;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+}
+.category-btn{
+    background:  #c9c9c9;
+    border: 1px solid;
+    /* border-color: #646464; */
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.category-btn.selected {
+    background-color: #007bff;
+    color: #eee;
+}
+#voteSystem{
+    justify-content: center;
+    text-align: center;
+    height:100%;
+    
+}
+#voteImagesContainer{
+    margin-top: 24px;
+    display: flex ;
+    justify-content: center; /* 중앙 정렬을 위해 */
+    gap: 10px; /* 이미지 사이 간격 조정 */
+}
+.voteImageSet {
+    width: 45%;
+    cursor: pointer;
+    margin: 0 10px; /* 이미지 사이 간격 조정 */
+}
+.voteImage{
+    border-radius: 5px;
+    border-color: #111111 1px;
+    width:100%;
+}
+.container {
+    display: block;
+    flex-direction: row;
+    height: 100%;
+}
+.footer{
+    background-color: #fff;
+    border-top:solid #b7b7b7; 
+    height:70px;
+    padding-top: 3px;
+    position:fixed;
+    bottom: env(safe-area-inset-bottom);
+    width: 100%;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.contents{
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+}
+.selected_footer_img{
+    width:62.5px;
+    height:62.5px;
+    border-radius: 50%;
+    border: solid 1px ;
+    border-color:  #cdcdcd ;
+    cursor: pointer;
+}
+.image-title {
+    position: absolute;
+    bottom: 2px;
+    left: 8px;
+    right: 0;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    background-color:#007bff ;
+    width:40px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+.image-title2 {
+    position: absolute;
+    bottom: 2px;
+    left: 76px;
+    right: 0;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    background-color:#007bff ;
+    width:40px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+.image-title3 {
+    position: absolute;
+    bottom: 2px;
+    left: 144px;
+    right: 0;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    background-color:#007bff ;
+    width:40px;
+    border-radius: 20px;
+    font-size: 12px;
+}

@@ -1,0 +1,154 @@
+[
+    {
+        "category":"female,jacket",
+        "img_src":"static/dress/female/Oversized Blazer and Crop Top Combo.png",
+        "alt":"Femail Image",
+        "text":"Oversized Blazer and Crop Top Combo",
+        "prompt":"Oversized Blazer, Crop Top Combo",
+        "type":"none"
+    },
+    {
+        "category":"female,skirt",
+        "img_src":"static/dress/female/Pleated Skirt and Sneakers.png",
+        "alt":"Female Image",
+        "text":"Pleated Skirt and Sneakers",
+        "prompt":"Pleated Skirt, casual style",
+        "type":"none"
+    }
+    ,{
+        "category":"female,shorts,blouse"
+        ,"img_src":"static/dress/female/WhiteBlouseDenimShorts.png"
+        ,"alt":"Female Image"
+        ,"text":"White Blouse + Denim Shorts"
+        ,"prompt":"White Blouse, Denim Shorts"
+        ,"type":"none"
+    }   
+    ,{
+        "category":"female,onepiece,dress"
+        ,"img_src":"static/dress/female/Floral Print Dress + Sandals.png"
+        ,"alt":"Female Image"
+        ,"text":"Floral Print Dress + Sandals"
+        ,"prompt":"Floral Print Dress, Sandals"
+        ,"type":"none"
+    }  ,{
+        "category":"female,shirt"
+        ,"img_src":"static/dress/female/Graphic T-Shirt + Mini Skirt.png"
+        ,"alt":"Female Image"
+        ,"text":"Graphic T-Shirt + Mini Skirt"
+        ,"prompt":"Graphic T-Shirt, Mini Skirt"
+        ,"type":"none"
+    }   ,{
+        "category":"female,jacket"
+        ,"img_src":"static/dress/female/Slip Dress + Denim Jacket.png"
+        ,"alt":"Female Image"
+        ,"text":"Slip Dress + Denim Jacket"
+        ,"prompt":"Slip Dress, Denim Jacket"
+        ,"type":"none"
+    }   ,{
+        "category":"female,pants"
+        ,"img_src":"static/dress/female/Sleeveless Knit Top + Wide-Leg Pants.png"
+        ,"alt":"Female Image"
+        ,"text":"Sleeveless Knit Top + Wide-Leg Pants"
+        ,"prompt":"Sleeveless Knit Top, Wide-Leg Pants"
+        ,"type":"none"
+    }   ,{
+        "category":"female,blouse"
+        ,"img_src":"static/dress/female/Blouse + High-Waisted Shorts.png"
+        ,"alt":"Female Image"
+        ,"text":"Blouse + High-Waisted Shorts"
+        ,"prompt":"White Blouse High-Waisted Shorts"
+        ,"type":"none"
+    }     ,{
+        "category":"female,dress"
+        ,"img_src":"static/dress/female/White wedding dress.png"
+        ,"alt":"Female Image"
+        ,"text":"White Wedding Dress"
+        ,"prompt":"luxurious white wedding dress, hunsha, veil, Earrings , Jewelry, SunLight, Flowers,(Absurdres)++"
+        ,"type":"new"
+    }    ,{
+        "category":"female,blouse" 
+        ,"img_src":"static/dress/female/white jacket pink bow blouse.png"
+        ,"alt":"Female Image"
+        ,"text":"White Jacket + Pink Bow-B"
+        ,"prompt":"cinematic film still,highly detailed,  high budget hollywood movie, cinemascope, moody, epic, gorgeous, model pose ,(white+++ slimfit jacket)+++, (Pink+ Bow-Blouse)+++"
+        ,"type":"new"
+    }  ,{
+        "category":"female,dress"
+        ,"img_src":"static/dress/female/princess dress.png"
+        ,"alt":"Female Image"
+        ,"text":"Princess Dress"
+        ,"prompt":"cinematic film still,highly detailed,cinematic light, golden hour, high budget hollywood movie, cinemascope, moody, epic, gorgeous, model pose ,pink princess dress in disney, crown"
+        ,"type":"new"
+    }    ,{
+        "category":"female,traditional"
+        ,"img_src":"static/dress/female/hanbok.png"
+        ,"alt":"Female Image"
+        ,"text":"Princess Dress"
+        ,"prompt":"cinematic film still,highly detailed,cinematic light, golden hour, high budget hollywood movie, cinemascope, moody, epic, gorgeous, model pose ,  pink and white hanbok+++, korean clothes, hanfu----,gimono----"
+        ,"type":"new"
+    }  ,{
+        "category":"male,shorts,shirt"
+        ,"img_src":"static/dress/male/Linen Shirt + Chino Shorts.png"
+        ,"alt":"Male Image"
+        ,"text":"Linen Shirt + Chino Shorts"
+        ,"prompt":"Linen Shirt, beige Chino Shorts"        
+        ,"type":"none"
+    }      ,{
+        "category":"male,pants,shirt"
+        ,"img_src":"static/dress/male/Polo Shirt + Slim-Fit Chino Pants.png"
+        ,"alt":"Male Image"
+        ,"text":"Polo Shirt + Slim-Fit Chino Pants"
+        ,"prompt":"navy color Polo Shirt, Slim-Fit Chino Pants"
+        ,"type":"none"
+    }       ,{
+        "category":"male,shorts,shirt"
+        ,"img_src":"static/dress/male/Short-Sleeve Button-Down Shirt + Denim Shorts.png"
+        ,"alt":"Male Image"
+        ,"text":"Short-Sleeve Button-Down Shirt + Denim Shorts"
+        ,"prompt":"Short-Sleeve patterned Button-Down Shirt, Denim Shorts"
+        ,"type":"none"
+    }   ,{
+        "category":"male,shorts"
+        ,"img_src":"static/dress/male/White T-Shirt + Denim Shorts.png"
+        ,"alt":"Male Image"
+        ,"text":"White T-Shirt + Denim Shorts"
+        ,"prompt":"White T-Shirt, Denim Shorts"
+        ,"type":"none"
+    }  ,{
+        "category":"male,costume,new"
+        ,"img_src":"static/dress/male/superman.jpg"
+        ,"alt":"Male Image"
+        ,"text":"Superman Costume"
+        ,"prompt":"(Superman),A breathtaking artwork featuring Superman, (blue upper armor) "
+        ,"type":"new"
+    }   ,{
+        "category":"male,costume"
+        ,"img_src":"static/dress/male/darkknight.jpg"
+        ,"alt":"Male Image"
+        ,"text":"Dark Knight Costume"
+        ,"prompt":"(Dark Knight costume),(batman),black armor, batman helm"
+        ,"type":"new"
+    }    ,{
+        "category":"male,costume"
+        ,"img_src":"static/dress/male/ironman.jpg"
+        ,"alt":"Male Image"
+        ,"text":"Iron man Costume"
+        ,"prompt":"(Iron man), marvel comics ,(red upper armor), high detailed armor "
+        ,"type":"new"
+    }    ,{
+        "category":"female,summer,new"
+        ,"img_src":"static/dress/female/Swimming wear.png"
+        ,"alt":"Female Image"
+        ,"text":"Swimming wear"
+        ,"prompt":"coloful swimming wear"
+        ,"type":"new"
+    }   ,{
+        "category":"male,summer,new"
+        ,"img_src":"static/dress/male/BodyProfile.png"
+        ,"alt":"Male Image"
+        ,"text":"Body Profile"
+        ,"prompt":"body builder, profile photo, topless, (huge muscles)++, jean, detailed face"
+        ,"type":"new"
+    }    
+    
+]
