@@ -175,6 +175,36 @@
             // 링크 삭제
             document.body.removeChild(link);
         }
+        async function shareResult(img){
+
+            let shareData = {
+            title: "MDN",
+            text: "Learn web development on MDN!",
+            url: "https://developer.mozilla.org",
+            };
+
+
+            if (!navigator.canShare) {
+                alert('Sharing not supported on this device.');
+            } else if (navigator.canShare(shareData)) {
+                console.log("navigator.canShare() supported. We can use navigator.share() to send the data.");
+                const response = await fetch(img.src);
+                const blob = await response.blob();
+                const file = new File([blob], 'shared-image.jpg', { type: blob.type });
+
+                const shareData = {
+                    title: "Fitit Image",
+                    text: "Discovery Your Style!",
+                    files: [file],
+                };
+                try {
+                    await navigator.share(shareData);
+                    console.log('Image shared successfully.');
+                } catch (err) {
+                    console.error('Error sharing image:', err);
+                }
+            }
+        }
         document.getElementById('btnInImageDown1').addEventListener('click', function() {
             console.log('Download button clicked for image 1');
             var img = document.getElementById('resultImage1');
@@ -183,7 +213,9 @@
 
         document.getElementById('btnInImageShare1').addEventListener('click', function() {
             console.log('Share button clicked for image 1');
-            // 여기에 공유 로직 추가
+            var img = document.getElementById('resultImage1');
+            shareResult(img);
+
         });
 
         document.getElementById('btnInImageDown2').addEventListener('click', function() {
@@ -194,7 +226,8 @@
 
         document.getElementById('btnInImageShare2').addEventListener('click', function() {
             console.log('Share button clicked for image 2');
-            // 여기에 공유 로직 추가
+            var img = document.getElementById('resultImage2');
+            shareResult(img);
         });
         
         function showLoadingScreen(turn_on){

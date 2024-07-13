@@ -329,24 +329,24 @@ a {
     font-size: 12px;
 }
 .btnInImage{
-    width:15%;
+    width:12%;
     opacity: 0.6;
     cursor: pointer;
     position: absolute;
     
     z-index: 2;
-    right: 8%;
+    right: 6%;
     top: 10px;
     display: none;
 }
 .btnInImage2{
-    width:15%;
+    width:12%;
     opacity: 0.6;
     cursor: pointer;
     position: absolute;
     
     z-index: 2;
-    right: 26%;
+    right: 20%;
     top: 10px;
     display: none;
 }
