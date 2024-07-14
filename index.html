@@ -20,25 +20,31 @@
     </div>
     <div id="container"  style="display:none;">
         <div class="title-bar cursive">
-            Fit it
+            Fitit
         </div>
         <div class="contents">
             <div class="content" id="gender_select" >
+                <img class="selected_footer_img" id="selected_footer_photo" src="static/empty_select_footer.png" alt="Background Image" />
+                <img class="selected_footer_img" id="selected_footer_bg" src="static/empty_select_footer.png" alt="Background Image" />
+                <img class="selected_footer_img" id="selected_footer_style" src="static/empty_select_footer.png" alt="Background Image" style="margin-left: 8px;" />
+                <div class="HotImg"><img src="static/dress/female/Blouse + High-Waisted Shorts.png"/></div>
+                
                 <main>
-                    <section id="sel_gender">
+                    <section id="sel_gender" style="display:none;">
                         <h2> Gender</h2>
                         <div class="gender">
                             <div id="gender_0" class="selected">Female</div>
                             <div id="gender_1">Male</div>
                         </div>
                     </section>
+                    
                     <section id="clothing-categories">
-                        <h2 id="h2_style">Style</h2>
+                        <div id="h2_style">Choose Your Styles</div>
                         <div id="categories">
                             <button class="category-btn selected" data-category="all">All</button>
                             <button class="category-btn" data-category="new">New</button>
-                            <button class="category-btn" data-category="female">Female</button>
-                            <button class="category-btn" data-category="male">Male</button>
+                            <button class="category-btn" data-category="female">Woman</button>
+                            <button class="category-btn" data-category="male">Man</button>
                             <button class="category-btn" data-category="costume">Costume</button>
                             <button class="category-btn" data-category="dress">Dress</button>
                             <button class="category-btn" data-category="onepiece">One Piece</button>
@@ -63,25 +69,25 @@
                                       
                         </div>
                     </section>
-                    <section id="background">
-                        <h2 id="h2_background"> Background</h2>
-                        <div class="backgrounds">
-                            <div id="bg_10"><img src="static/bg/Hawaii Beach.png" alt="Background Image" /><div class="new-badge">NEW</div>Hawaii Beach</div>
-                            <div id="bg_11"><img src="static/bg/Santorini.png" alt="Background Image" /><div class="new-badge">NEW</div>Santorini</div>
-                            <div id="bg_12"><img src="static/bg/Night City.png" alt="Background Image" /><div class="new-badge">NEW</div>Night City</div>
-                            <div id="bg_13"><img src="static/bg/Iguazu Falls.png" alt="Background Image" /><div class="new-badge">NEW</div>Iguazu Falls</div>
-                            <div id="bg_0"><img src="static/bg/Luxurious mansion staircase.png" alt="Background Image" />Luxurious mansion staircase</div>
-                            <div id="bg_1"><img src="static/bg/Modern urban rooftop.png" alt="Background Image" />Modern urban rooftop</div>
-                            <div id="bg_2"><img src="static/bg/Tropical jungle.png" alt="Background Image" />Tropical jungle</div>
-                            <div id="bg_3"><img src="static/bg/Industrial warehouse.png" alt="Background Image" />Industrial warehouse</div>
-                            <div id="bg_4"><img src="static/bg/Minimalist white studio.png" alt="Background Image" />Minimalist white studio</div>
-                            <div id="bg_5"><img src="static/bg/Beachside resort.png" alt="Background Image" />Beachside resort</div>
-                            <div id="bg_6"><img src="static/bg/Classic European street.png" alt="Background Image" />Classic European street</div>
-                            <div id="bg_7"><img src="static/bg/Picturesque vineyard.png" alt="Background Image" />Picturesque vineyard</div>
-                            <div id="bg_8"><img src="static/bg/Autumn forest.png" alt="Background Image" />Autumn forest</div>
-                            <div id="bg_9"><img src="static/bg/Chic modern living room.png" alt="Background Image" />Chic modern living room</div>
-                        </div>
-                    </section>
+                    <h2 id="h2_background"> Background</h2>
+                    <div class="backgrounds">
+                        <div id="bg_10"><img src="static/bg/Hawaii Beach.png" alt="Background Image" /></div>
+                        <div id="bg_11"><img src="static/bg/Santorini.png" alt="Background Image" /></div>
+                        <div id="bg_12"><img src="static/bg/Night City.png" alt="Background Image" /></div>
+                        <div id="bg_13"><img src="static/bg/Iguazu Falls.png" alt="Background Image" /></div>
+                        <div id="bg_0"><img src="static/bg/Luxurious mansion staircase.png" alt="Background Image" /> </div>
+                        <div id="bg_1"><img src="static/bg/Modern urban rooftop.png" alt="Background Image" />  </div>
+                        <div id="bg_2"><img src="static/bg/Tropical jungle.png" alt="Background Image" /> </div>
+                        <div id="bg_3"><img src="static/bg/Industrial warehouse.png" alt="Background Image" /> </div>
+                        <div id="bg_4"><img src="static/bg/Minimalist white studio.png" alt="Background Image" />  </div>
+                        <div id="bg_5"><img src="static/bg/Beachside resort.png" alt="Background Image" /> </div>
+                        <div id="bg_6"><img src="static/bg/Classic European street.png" alt="Background Image" /></div>
+                        <div id="bg_7"><img src="static/bg/Picturesque vineyard.png" alt="Background Image" /> </div>
+                        <div id="bg_8"><img src="static/bg/Autumn forest.png" alt="Background Image" /> </div>
+                        <div id="bg_9"><img src="static/bg/Chic modern living room.png" alt="Background Image" /> </div>
+                        <div class="placeholder"></div>
+                        <div class="placeholder"></div>
+                    </div>
                 </main>
             </div>
             <!-- style="display: none;" -->
@@ -138,13 +144,10 @@
             </div>
         </div>
         <div class="footer" id="upload">
-            <img class="selected_footer_img" id="selected_footer_style" src="static/empty_select_footer.png" alt="Background Image" style="margin-left: 8px;" />
-            <div class="image-title">Style</div>
-            <img class="selected_footer_img" id="selected_footer_bg" src="static/empty_select_footer.png" alt="Background Image" />
-            <div class="image-title2">BG</div>
-            <img class="selected_footer_img" id="selected_footer_photo" src="static/empty_select_footer.png" alt="Background Image" />
-            <div class="image-title3">Photo</div>
-            <button class="flat-button cursive" id="uploadButton" style="margin-right: 8px;">Fit it</button>
+            <!-- <div class="image-title">Style</div> -->
+            <!-- <div class="image-title2">BG</div> -->
+            <!-- <div class="image-title3">Photo</div> -->
+            <button class="flat-button" id="uploadButton" style="margin-right: 8px;">Discovery Now</button>
             <button class="flat-button-sub" id="againButton">Again same picture</button>
             <input style="display: none;" type="file" id="fileInput" />
            
@@ -424,8 +427,8 @@
                     const nameText = document.createTextNode(item.text);
 
                     itemDiv.appendChild(img);
-                    if(item.type == "new"){ itemDiv.appendChild(badgeDiv);}
-                    itemDiv.appendChild(nameText);
+                    // if(item.type == "new"){ itemDiv.appendChild(badgeDiv);}
+                    // itemDiv.appendChild(nameText);
 
                     styleDataContainer.appendChild(itemDiv);
                     Index--;
