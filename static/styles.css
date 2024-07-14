@@ -308,7 +308,7 @@ a {
 }
 
 .contents{
-    height: calc(100vh - 145px - env(safe-area-inset-bottom));
+    height: calc(100vh - 145px + env(safe-area-inset-bottom));
     overflow-y: auto;
 }
 .selected_footer_img{
