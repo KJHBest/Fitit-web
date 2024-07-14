@@ -132,7 +132,7 @@ main {
     top: 0;
     left: 0; */
 }
-.backgrounds .placeholder {
+.backgrounds .placeholder ,.styles .placeholder {
     visibility: hidden; /* Make placeholders invisible */
 }
 .gender div {

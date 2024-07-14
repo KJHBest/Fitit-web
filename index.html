@@ -433,6 +433,11 @@
                     styleDataContainer.appendChild(itemDiv);
                     Index--;
                 });
+                for(var i=0 ; i <= data.length % 4 +1 ;i++){
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "placeholder";
+                    styleDataContainer.appendChild(itemDiv);
+                }
                 const genderOptions = document.querySelectorAll('.gender div');
                 const styleOptions = document.querySelectorAll('.styles div');
                 
