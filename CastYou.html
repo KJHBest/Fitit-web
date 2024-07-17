@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Fit it</title>
+    <style>
+        body {
+            color:#f5f5f5;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-y:auto;
+        }
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        .instruction {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            justify-content: center; /* 가운데 정렬을 위해 추가 */
+            /* height:calc(100vh + 300px); */
+        }
+        .thumbnail {
+            width:24%;
+            /* aspect-ratio: 3 / 4;  */
+             border: 5px solid #111;
+            /*padding: 1px; */
+            background-color: #111;
+            text-align: left;
+            cursor: pointer;
+            
+        }
+        .thumbnail.selected {
+            border-color: #650015;
+        }
+        
+        .photo-upload {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            position: fixed;
+            bottom: env(safe-area-inset-bottom);
+            width: 100%;
+            padding-bottom: env(safe-area-inset-bottom);
+            bottom:0;
+            padding: 10px;
+            background-color: #111;
+        }
+        .photo-upload input[type="text"],
+        .photo-upload input[type="file"] {
+            margin: 10px 0;
+            width: 100%;
+        }
+        .photo-upload button {
+            background-color: #650015;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 90%;
+            border-radius: 20px;
+        }
+        .thumbnail img{
+            width: 100%;
+            height: 100%;
+        }
+        .uploaded-photo{
+            width: 25%;
+            min-height: 100px;
+            background-color: #111;
+            border: 3px dashed #323334;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #uploadedImage {
+            margin-top: 10px;
+            width: 100%;
+            display: none;
+        }
+        #empty-gap{
+            height:300px;
+            color: #111;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="title">- Cast You - </div>
+        <h1>Be the Star of Your Favorite Movie!</h1>
+        <div class="instruction">영화와 캐릭터를 선택하세요</div>
+        <div class="grid-container">
+            <div class="thumbnail" id="1" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster1.jpg" alt="Poster 1"></div>
+            <div class="thumbnail" id="2" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster2.jpg" alt="Poster 2"></div>
+            <div class="thumbnail" id="3" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster3.jpg" alt="Poster 3"></div>
+            <div class="thumbnail" id="4" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster4.jpg" alt="Poster 4"></div>
+            <div class="thumbnail" id="5" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster5.jpg" alt="Poster 5"></div>
+            <div class="thumbnail" id="6" onclick="selectThumbnail(this)"><img src="static/CastYou/Posters/Poster6.jpg" alt="Poster 6"></div>
+            <!-- <div class="thumbnail" onclick="selectThumbnail(this)">Movie 5</div>
+            <div class="thumbnail" onclick="selectThumbnail(this)">Movie 6</div>
+            <div class="thumbnail" onclick="selectThumbnail(this)">Movie 7</div>
+            <div class="thumbnail" onclick="selectThumbnail(this)">Movie 8</div>
+            <div class="thumbnail" onclick="selectThumbnail(this)">Movie 9</div> -->
+        </div>
+        <div id="empty-gap">-</div>
+        <div class="photo-upload">
+            <div class="instruction">Upload Your Photo</div>
+            <div class="uploaded-photo" onclick="uploadPhoto()">
+                <img id="uploadedImage" alt="Uploaded Photo">
+                <div id="upload-text">클릭해서 사진을 선택하세요.</div> 
+            </div>
+            <br>
+            <input style="display: none;" type="file" id="fileInput">
+            <button id="submitBtn" onclick="submitPhoto()">업로드</button>
+        </div>
+    </div>
+    <script>
+        function selectThumbnail(element) {
+            // 모든 썸네일의 'selected' 클래스를 제거
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.classList.remove('selected');
+            });
+            // 클릭된 썸네일에 'selected' 클래스 추가
+            element.classList.add('selected');
+        }
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const fileInput = document.getElementById('fileInput');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const uploadedtext = document.getElementById('upload-text');
+            uploadedtext.style.display="none"
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block'; // show the image
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+        function uploadPhoto() {
+            const fileInput = document.getElementById('fileInput');
+            fileInput.value='';
+            // 파일 선택 대화상자 열기
+            fileInput.click();
+        }
+        function submitPhoto(){
+            var selectedThumbnail = document.querySelector('.thumbnail.selected');
+            if (!selectedThumbnail) {
+                alert('영화와 캐릭터를 선택하세요');
+                return;
+            }
+
+            var fileInput = document.getElementById('fileInput');
+            if (!fileInput.files.length) {
+                alert('사진을 업로드하세요');
+                return;
+            }
+
+            var formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('poster', selectedThumbnail.id);
+
+            fetch('http://localhost:8080/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                console.log(data)
+                if(data.images != undefined){
+                    // 이미지 컨테이너 div를 가져옵니다
+                    var imageContainer = document.getElementById('empty-gap');
+
+                    // 새로운 img 요소를 만듭니다
+                    var img = document.createElement('img');
+
+                    // img 요소의 속성을 설정합니다
+                    img.src = `data:image/png;base64,${data.images[0]}`; // 이미지 경로를 설정하세요
+                    img.alt = 'Result image'; // 이미지 설명을 설정하세요
+                    img.style.width="50%"
+                    // img 요소를 imageContainer div에 추가합니다
+                    imageContainer.appendChild(img);
+                }
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
