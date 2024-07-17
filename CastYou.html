@@ -178,8 +178,8 @@
             var formData = new FormData();
             formData.append('file', fileInput.files[0]);
             formData.append('poster', selectedThumbnail.id);
-
-            fetch('http://localhost:8080/upload', {
+            
+            fetch('http://kjhbest.iptime.org:8080/upload', {
                 method: 'POST',
                 body: formData
             })
